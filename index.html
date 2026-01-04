@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Pan Libre: Свободный Город</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink-color: #1a1a1a;
+            --paper-color: #f5f5f0;
+            --accent-color: #8b0000;
+            --highlight-color: #2e8b57;
+            --border-color: #8b7355;
+            --typewriter-font: 'Courier Prime', monospace;
+            --headline-font: 'Special Elite', cursive;
+            --serif-font: 'Playfair Display', serif;
+        }
+
+        body {
+            font-family: var(--typewriter-font);
+            background-color: var(--paper-color);
+            color: var(--ink-color);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(245, 245, 240, 0.9), rgba(245, 245, 240, 0.9)),
+                url('https://avatars.mds.yandex.net/i?id=664fd440db00d03e39f58427db426061aa57015a-7051792-images-thumbs&n=13');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-blend-mode: overlay;
+        }
+
+        .typewriter-effect {
+            font-family: var(--typewriter-font);
+            border-right: 2px solid var(--ink-color);
+            padding-right: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: var(--ink-color); }
+            50% { border-color: transparent; }
+        }
+
+        .paper-texture {
+            background-color: var(--paper-color);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .paper-texture::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, transparent 95%, rgba(139, 115, 85, 0.1) 100%),
+                linear-gradient(0deg, transparent 95%, rgba(139, 115, 85, 0.1) 100%);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--paper-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 3px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            color: var(--accent-color);
+            font-size: 2.2rem;
+        }
+
+        .logo-text {
+            font-family: var(--headline-font);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--ink-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-subtitle {
+            font-family: var(--typewriter-font);
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-top: -5px;
+            letter-spacing: 3px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--ink-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 50px;
+        }
+
+        .hero-title {
+            font-family: var(--headline-font);
+            font-size: 4.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--ink-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .hero-subtitle {
+            font-family: var(--serif-font);
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--ink-color);
+            max-width: 800px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        .newspaper-headline {
+            font-family: var(--headline-font);
+            font-size: 5rem;
+            text-align: center;
+            margin: 40px 0;
+            color: var(--ink-color);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            padding: 20px;
+        }
+
+        .newspaper-headline::before,
+        .newspaper-headline::after {
+            content: '•••';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--accent-color);
+            font-size: 2rem;
+            letter-spacing: 10px;
+        }
+
+        .newspaper-headline::before {
+            top: -10px;
+        }
+
+        .newspaper-headline::after {
+            bottom: -10px;
+        }
+
+        .leader-profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--border-color);
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .leader-photo {
+            flex-shrink: 0;
+            width: 250px;
+            height: 300px;
+            background: linear-gradient(45deg, var(--accent-color), var(--highlight-color));
+            position: relative;
+            border: 5px solid var(--ink-color);
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .leader-photo::before {
+            content: 'ИСААК МАРДАХАЕВ';
+            position: absolute;
+            bottom: -25px;
+            left: 10px;
+            font-family: var(--headline-font);
+            font-size: 1.2rem;
+            color: var(--ink-color);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .leader-info {
+            flex: 1;
+        }
+
+        .leader-info h2 {
+            font-family: var(--headline-font);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .leader-info h3 {
+            font-family: var(--serif-font);
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--highlight-color);
+            font-style: italic;
+        }
+
+        .leader-info p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        /* Manifesto Section */
+        .manifesto {
+            padding: 80px 0;
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            margin: 50px 0;
+        }
+
+        .section-title {
+            font-family: var(--headline-font);
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--ink-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .manifesto-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--border-color);
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .manifesto-content::before {
+            content: 'ВАЖНОЕ ЗАЯВЛЕНИЕ';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--paper-color);
+            padding: 0 15px;
+            font-family: var(--headline-font);
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .manifesto-content p {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .manifesto-content .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Political Program */
+        .program {
+            padding: 80px 0;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .program-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border: 2px solid var(--border-color);
+            box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--highlight-color);
+        }
+
+        .program-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .program-card h3 {
+            font-family: var(--headline-font);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--ink-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .program-card p {
+            font-size: 1.1rem;
+            color: var(--ink-color);
+            line-height: 1.6;
+        }
+
+        .program-card ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .program-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .program-card ul li::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            color: var(--highlight-color);
+        }
+
+        /* Join Section */
+        .join-section {
+            padding: 80px 0;
+            background: rgba(139, 115, 85, 0.1);
+            border-top: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--border-color);
+            text-align: center;
+        }
+
+        .join-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--paper-color);
+            font-family: var(--headline-font);
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 20px 50px;
+            border: none;
+            text-decoration: none;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--ink-color);
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .join-button:hover {
+            background-color: var(--highlight-color);
+            transform: translate(5px, 5px);
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .join-button:active {
+            transform: translate(8px, 8px);
+            box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .press-release {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--border-color);
+            text-align: left;
+            position: relative;
+        }
+
+        .press-release::before {
+            content: 'ПРЕСС-РЕЛИЗ';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--paper-color);
+            padding: 0 15px;
+            font-family: var(--headline-font);
+            font-size: 1rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--ink-color);
+            color: var(--paper-color);
+            padding: 60px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-family: var(--headline-font);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--paper-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: var(--typewriter-font);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--paper-color);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 0.9rem;
+            font-family: var(--typewriter-font);
+        }
+
+        .political-slogan {
+            font-family: var(--headline-font);
+            font-size: 1.8rem;
+            text-align: center;
+            margin: 40px 0;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1.4;
+        }
+
+        /* Newspaper Column Layout */
+        .newspaper-columns {
+            column-count: 2;
+            column-gap: 40px;
+            margin: 40px 0;
+        }
+
+        .newspaper-columns p {
+            margin-bottom: 20px;
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-family: var(--headline-font);
+            font-size: 4rem;
+            line-height: 0.8;
+            padding-top: 5px;
+            padding-right: 8px;
+            padding-left: 3px;
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .newspaper-headline {
+                font-size: 4rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .newspaper-columns {
+                column-count: 1;
+            }
+            
+            .leader-profile {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .hero {
+                padding: 220px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .newspaper-headline {
+                font-size: 3rem;
+                letter-spacing: 3px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .join-button {
+                padding: 15px 30px;
+                font-size: 1.2rem;
+            }
+            
+            .program-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Typing Animation */
+        .typing-container {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 20px 0;
+        }
+
+        /* Print Styling */
+        @media print {
+            header {
+                position: static;
+            }
+            
+            .hero {
+                padding: 50px 0;
+            }
+            
+            .join-button {
+                display: none;
+            }
+            
+            footer {
+                background: none;
+                color: var(--ink-color);
+                border-top: 2px solid var(--ink-color);
+            }
+            
+            .footer-column h3 {
+                color: var(--ink-color);
+            }
+        }
+
+        /* Stamp Effect */
+        .stamp {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 3px dashed var(--accent-color);
+            font-family: var(--headline-font);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin: 10px;
+            transform: rotate(-5deg);
+        }
+
+        .stamp::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid var(--accent-color);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="paper-texture">
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div>
+                    <div class="logo-text">EL PAN LIBRE</div>
+                    <div class="logo-subtitle">СВОБОДНЫЙ ГОРОД</div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#manifesto">Манифест</a></li>
+                    <li><a href="#program">Программа</a></li>
+                    <li><a href="#leader">Лидер</a></li>
+                    <li><a href="#join">Собрания</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero paper-texture">
+        <div class="container">
+            <div class="newspaper-headline">El Pan Libre</div>
+            
+            <div class="typing-container">
+                <h1 class="hero-title typewriter-effect">СВОБОДНЫЙ ГОРОД —<br>СПРАВЕДЛИВОЕ ОБЩЕСТВО</h1>
+            </div>
+            
+            <p class="hero-subtitle">
+                Политическое движение за социальный прогресс, городскую справедливость 
+                и подлинную демократию в El Pan City
+            </p>
+            
+            <div class="political-slogan">
+                НЕ ПРОСИМ РАЗРЕШЕНИЯ НА ПЕРЕМЕНЫ — СОЗДАЁМ ИХ САМИ
+            </div>
+        </div>
+    </section>
+
+    <!-- Leader Profile -->
+    <section class="container" id="leader">
+        <div class="leader-profile">
+            <div class="leader-photo">
+                <!-- Фото лидера - стилизованный блок -->
+            </div>
+            <div class="leader-info">
+                <h2>ИСААК МАРДАХАЕВ ВЛАДИМИРОВИЧ</h2>
+                <h3>Лидер движения "El Pan Libre", общественный деятель, защитник городских прав</h3>
+                
+                <div class="newspaper-columns">
+                    <p class="drop-cap">
+                        Исаак Мардахаев Владимирович — не просто политик, а голос городских 
+                        сообществ El Pan City. Родившись в рабочем районе города, он прошёл 
+                        путь от активиста районного комитета до лидера общенационального 
+                        движения за городские права.
+                    </p>
+                    
+                    <p>
+                        Его политическая философия строится на трёх принципах: 
+                        <strong>прямая демократия</strong>, <strong>социальная справедливость</strong> 
+                        и <strong>экологический урбанизм</strong>. Под его руководством 
+                        движение "El Pan Libre" стало самой быстрорастущей политической силой 
+                        в городе, объединившей рабочих, интеллигенцию, молодёжь и пенсионеров 
+                        вокруг идеи справедливого переустройства городского пространства.
+                    </p>
+                    
+                    <p>
+                        "Город должен принадлежать тем, кто в нём живёт, работает и воспитывает 
+                        детей" — этот принцип стал лозунгом всей его политической деятельности.
+                    </p>
+                </div>
+                
+                <div class="stamp">Народный кандидат</div>
+                <div class="stamp">За городские права</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section class="manifesto paper-texture" id="manifesto">
+        <div class="container">
+            <h2 class="section-title">НАШ МАНИФЕСТ</h2>
+            <div class="manifesto-content">
+                <p>
+                    El Pan City стоит на перепутье. С одной стороны — коррумпированные элиты, 
+                    превратившие город в источник личного обогащения. С другой — равнодушные 
+                    бюрократы, для которых горожане всего лишь статистика в отчётах.
+                </p>
+                
+                <p>
+                    <span class="highlight">El Pan Libre</span> — это голос тех, кого не слышат. 
+                    Это движение рабочих, учителей, врачей, студентов, пенсионеров — всех, 
+                    кто каждый день создаёт реальность нашего города своими руками.
+                </p>
+                
+                <p>
+                    Мы требуем <span class="highlight">перераспределения городских ресурсов</span> 
+                    в пользу общественных нужд. Деньги, которые сегодня уходят на коррупционные 
+                    схемы и показные проекты, должны работать на школы, больницы, общественный 
+                    транспорт и доступное жильё.
+                </p>
+                
+                <p>
+                    Наша цель — <span class="highlight">город, который работает для людей</span>, 
+                    а не люди, которые работают на городскую казну. Город, где решение принимаются 
+                    не в кабинетах чиновников, а на открытых городских собраниях. Город, где 
+                    каждый житель имеет реальное право голоса в вопросах, которые касаются 
+                    его района, его улицы, его дома.
+                </p>
+                
+                <p>
+                    Присоединяйтесь к нам. Вместе мы вернём город его законным хозяевам — 
+                    горожанам.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Political Program -->
+    <section class="program container" id="program">
+        <h2 class="section-title">ПРОГРАММА ПЕРЕМЕН</h2>
+        
+        <div class="program-grid">
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Доступное жильё</h3>
+                <p>Борьба с квартирными спекуляциями и программа муниципального жилья:</p>
+                <ul>
+                    <li>Заморозка арендных ставок</li>
+                    <li>Строительство социального жилья</li>
+                    <li>Поддержка жилищных кооперативов</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Общественное здравоохранение</h3>
+                <p>Реформа городской медицины, доступной каждому:</p>
+                <ul>
+                    <li>Бесплатные поликлиники в каждом районе</li>
+                    <li>Программа профилактики заболеваний</li>
+                    <li>Поддержка врачей и медперсонала</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Образование будущего</h3>
+                <p>Инвестиции в знания и развитие молодёжи:</p>
+                <ul>
+                    <li>Бесплатное дополнительное образование</li>
+                    <li>Современное оборудование в школах</li>
+                    <li>Программы профориентации</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3>Зелёный город</h3>
+                <p>Экологическое переустройство городского пространства:</p>
+                <ul>
+                    <li>Создание парков и скверов</li>
+                    <li>Развитие велосипедной инфраструктуры</li>
+                    <li>Программа городского озеленения</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Прямая демократия</h3>
+                <p>Возвращение власти в руки горожан:</p>
+                <ul>
+                    <li>Районные собрания с правом решений</li>
+                    <li>Публичные отчёты чиновников</li>
+                    <li>Бюджет, формируемый жителями</li>
+                </ul>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Экономика для людей</h3>
+                <p>Поддержка местного бизнеса и рабочих мест:</p>
+                <ul>
+                    <li>Налоговые льготы для малого бизнеса</li>
+                    <li>Программы переквалификации</li>
+                    <li>Справедливая минимальная зарплата</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Section -->
+    <section class="join-section paper-texture" id="join">
+        <div class="container">
+            <h2 class="section-title">ПРИСОЕДИНЯЙТЕСЬ К ДВИЖЕНИЮ</h2>
+            
+            <div class="political-slogan">
+                ИЗМЕНЕНИЯ НАЧИНАЮТСЯ С КАЖДОГО ИЗ НАС
+            </div>
+            
+            <a href="#" class="join-button" id="joinBtn">
+                <i class="fas fa-fist-raised"></i> ВСТУПИТЬ В ДВИЖЕНИЕ
+            </a>
+            
+            <div class="press-release">
+                <h3>БЛИЖАЙШИЕ СОБЫТИЯ:</h3>
+                <p><strong>Каждую субботу, 14:00</strong> — Городское собрание на Центральной площади</p>
+                <p><strong>По вторникам, 19:00</strong> — Встречи актива в районах города</p>
+                <p><strong>Ежемесячно</strong> — Открытые отчёты лидера движения</p>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>Штаб-квартира:</strong> Ул. Свободы, 15, El Pan City</p>
+                    <p><i class="fas fa-phone"></i> <strong>Горячая линия:</strong> 8-800-ELPAN-LIBRE</p>
+                    <p><i class="fas fa-envelope"></i> <strong>Почта:</strong> info@elpanlibre-city.org</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>El Pan Libre</h3>
+                    <p>Движение за социальную справедливость, городские права и подлинную демократию в El Pan City.</p>
+                    <p style="margin-top: 15px; font-style: italic;">
+                        "Город принадлежит тем, кто в нём живёт"
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Программа</h3>
+                    <ul>
+                        <li><a href="#program">Доступное жильё</a></li>
+                        <li><a href="#program">Общественное здоровье</a></li>
+                        <li><a href="#program">Образование</a></li>
+                        <li><a href="#program">Экология города</a></li>
+                        <li><a href="#program">Экономика для людей</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Ул. Свободы, 15</li>
+                        <li><i class="fas fa-phone"></i> 8-800-ELPAN-LIBRE</li>
+                        <li><i class="fas fa-envelope"></i> info@elpanlibre-city.org</li>
+                        <li><i class="fas fa-users"></i> Собрания по субботам</li>
+                        <li><i class="fas fa-newspaper"></i> Газета "Свободный Город"</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Присоединиться</h3>
+                    <ul>
+                        <li><a href="#join">Стать членом движения</a></li>
+                        <li><a href="#join">Волонтёрская работа</a></li>
+                        <li><a href="#join">Поддержать материально</a></li>
+                        <li><a href="#join">Распространять информацию</a></li>
+                        <li><a href="#join">Организовать собрание</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                © 2023 Движение "El Pan Libre: Свободный Город". Все права защищены.<br>
+                El Pan City, Ул. Свободы, 15. Телефон: 8-800-ELPAN-LIBRE
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Плавная прокрутка для навигации
+            document.querySelectorAll('nav a, .join-button').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Эффект печатной машинки для заголовка
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                heroTitle.textContent = '';
+                let i = 0;
+                
+                function typeWriter() {
+                    if (i < originalText.length) {
+                        heroTitle.textContent += originalText.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        // После завершения печати добавляем мигающий курсор
+                        heroTitle.classList.add('typewriter-effect');
+                    }
+                }
+                
+                // Запускаем эффект через секунду после загрузки
+                setTimeout(typeWriter, 1000);
+            }
+
+            // Обработчик кнопки "ВСТУПИТЬ В ДВИЖЕНИЕ"
+            document.getElementById('joinBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Создаем модальное окно в стиле бюллетеня
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.8);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 2000;
+                `;
+                
+                modal.innerHTML = `
+                    <div style="background: #f5f5f0; 
+                                 padding: 40px; 
+                                 max-width: 500px; 
+                                 width: 90%;
+                                 border: 3px solid #8b0000;
+                                 position: relative;
+                                 box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
+                                 font-family: 'Courier Prime', monospace;">
+                        <button id="closeModal" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #8b0000; font-size: 1.5rem; cursor: pointer;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <h2 style="color: #1a1a1a; font-size: 2rem; margin-bottom: 20px; font-family: 'Special Elite', cursive; text-transform: uppercase; letter-spacing: 2px;">
+                            <i class="fas fa-clipboard-list"></i> ЗАЯВКА НА ВСТУПЛЕНИЕ
+                        </h2>
+                        <div style="border: 2px dashed #8b7355; padding: 20px; margin-bottom: 20px;">
+                            <p style="margin-bottom: 15px;"><strong>El Pan Libre</strong> — движение открытое для всех жителей города, разделяющих наши ценности:</p>
+                            <ul style="margin-left: 20px; margin-bottom: 15px;">
+                                <li>Социальная справедливость</li>
+                                <li>Городские права</li>
+                                <li>Прямая демократия</li>
+                                <li>Экологическая ответственность</li>
+                            </ul>
+                        </div>
+                        <div style="background: rgba(139, 0, 0, 0.1); padding: 15px; border-left: 3px solid #8b0000; margin-bottom: 20px;">
+                            <p style="margin: 0;"><strong>Для вступления:</strong></p>
+                            <p style="margin: 5px 0 0 0;">1. Приходите на любое городское собрание</p>
+                            <p style="margin: 5px 0 0 0;">2. Заполните заявление на месте</p>
+                            <p style="margin: 5px 0 0 0;">3. Получите членскую карточку</p>
+                        </div>
+                        <p style="text-align: center; font-style: italic; color: #2e8b57;">
+                            "Изменения начинаются с первого шага"
+                        </p>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Закрытие модального окна
+                document.getElementById('closeModal').addEventListener('click', function() {
+                    document.body.removeChild(modal);
+                });
+                
+                // Закрытие при клике вне модального окна
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        document.body.removeChild(modal);
+                    }
+                });
+            });
+
+            // Эффект старых газет - добавление случайных "пятен" на бумаге
+            const paperElements = document.querySelectorAll('.paper-texture, .manifesto-content, .program-card, .press-release');
+            paperElements.forEach(element => {
+                // Случайные "пятна" на бумаге
+                if (Math.random() > 0.7) {
+                    const stain = document.createElement('div');
+                    stain.style.cssText = `
+                        position: absolute;
+                        width: ${50 + Math.random() * 100}px;
+                        height: ${50 + Math.random() * 100}px;
+                        background: rgba(139, 115, 85, 0.05);
+                        border-radius: 50%;
+                        top: ${Math.random() * 100}%;
+                        left: ${Math.random() * 100}%;
+                        pointer-events: none;
+                        z-index: 0;
+                    `;
+                    element.style.position = 'relative';
+                    element.appendChild(stain);
+                }
+            });
+
+            // Эффект печатающегося текста для пресс-релиза
+            const pressText = document.querySelector('.press-release p');
+            if (pressText) {
+                const originalPressText = pressText.textContent;
+                pressText.textContent = '';
+                let j = 0;
+                
+                function typePress() {
+                    if (j < originalPressText.length) {
+                        pressText.textContent += originalPressText.charAt(j);
+                        j++;
+                        setTimeout(typePress, 30);
+                    }
+                }
+                
+                // Запускаем при прокрутке до элемента
+                const observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        setTimeout(typePress, 500);
+                        observer.unobserve(pressText);
+                    }
+                });
+                
+                observer.observe(pressText);
+            }
+
+            // Добавляем звук печатной машинки при наборе
+            const typeSound = new Audio('data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAZGF0YQQAAAAAAA==');
+            
+            // Эмуляция звука при нажатии на кнопки навигации
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    // Тихое щелкание для печатной машинки
+                    try {
+                        typeSound.play();
+                    } catch(e) {
+                        // Игнорируем ошибки воспроизведения
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
